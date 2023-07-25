@@ -12,17 +12,18 @@ function App() {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTodos((currentTodos) => {
-      return [
-        ...currentTodos,
-        {
-          id: crypto.randomUUID(),
-          task: newItem,
-          date: new Date(),
-          completed: false,
-        },
-      ];
-    });
+    if (newItem.length > 0)
+      setTodos((currentTodos) => {
+        return [
+          ...currentTodos,
+          {
+            id: crypto.randomUUID(),
+            task: newItem,
+            date: new Date(),
+            completed: false,
+          },
+        ];
+      });
     setNewItem("");
   };
   const toggleTodo = (id: string, completed: boolean) => {
@@ -49,10 +50,7 @@ function App() {
           className="new-item-form h-auto w-full"
           onSubmit={(e) => handleSubmit(e)}
         >
-          <div className="form-row flex flex-col h-20">
-            <label htmlFor="item" className="h-4 px-0.5 text-lg">
-              New Item
-            </label>
+          <div className="form-row flex flex-col h-16">
             <input
               type="text"
               value={newItem}
@@ -60,8 +58,7 @@ function App() {
               onChange={(e) => {
                 setNewItem(e.target.value);
               }}
-              className="h-10 py-1 mt-4 input input-bordered input-primary
-                          text-lg rounded-lg px-5"
+              className="form-input"
               id="item"
             />
           </div>
