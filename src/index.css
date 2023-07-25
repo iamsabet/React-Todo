@@ -38,8 +38,11 @@
   }
   .list-item{
     @apply flex flex-row justify-start w-full divide-dashed 
-    btn-neutral rounded-xl p-0 my-2 shadow-lg
+    rounded-xl p-0 my-2 shadow-lg
     cursor-pointer
+    bg-success
+    bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20
+    hover:bg-opacity-40
   }
   .item-label{
     @apply flex flex-row justify-start cursor-pointer 
@@ -49,7 +52,15 @@
     @apply ml-3 text-lg
   }
   .delete-button{
-    @apply btn btn-xs bg-red-800 ml-auto
+    @apply btn btn-xs btn-accent ml-auto font-semibold
+  }
+  .theme-button{
+    @apply fixed right-10 top-6 z-10
+  }
+  .theme-icon{
+    @apply transition-all duration-200 ease-in
+    text-base-content
+    hover:text-success
   }
 }
 

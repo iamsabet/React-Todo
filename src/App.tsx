@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import NewTodoForm from "./components/NewTodoForm";
 import TodoList from "./components/TodoList";
-
+import { themeChange } from "theme-change";
+import { BsMoon, BsSun } from "react-icons/bs";
 function App() {
   const [todos, setTodos] = useState<TodoType[]>(() => {
     const local = localStorage.getItem("todos");
@@ -12,10 +13,12 @@ function App() {
   // we cant render hooks conditionaly
   useEffect(() => {
     // run everytime todos
-
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  useEffect(() => {
+    themeChange(false);
+  }, []);
   const addToDo = (title: string) => {
     setTodos((currentTodos) => {
       return [
@@ -46,9 +49,13 @@ function App() {
   };
   return (
     <>
-      <div className="justify-center items-start pt-4 px-10 w-full h-auto flex flex-col">
-        <h1 className="header text-4xl mb-5 mx-7 font-bold tracking-wider link-success text-center">
-          React + Tailwind Todo List App
+      <ThemeButton />
+      <div className="justify-center items-center pt-4 px-10 w-full h-auto flex flex-col">
+        <h1 className="header text-4xl mb-0 mx-7 font-bold tracking-wider link-success text-center first-letter:text-accent">
+          React + Tailwind
+        </h1>
+        <h1 className="header text-4xl mb-3 mx-7 font-bold tracking-wider link-success text-center first-letter:text-accent">
+          Todo List App
         </h1>
         <NewTodoForm onSubmit={addToDo} />
         <hr className="bg-white w-9/12 mt-6 mb-2 mx-auto rounded-lg" />
@@ -60,5 +67,30 @@ function App() {
     </>
   );
 }
+
+const ThemeButton = () => {
+  const [themeState, setTheme] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    if (!theme) return false;
+    if (theme === "light") return true;
+    else return false;
+  });
+  return (
+    <button
+      className="theme-button"
+      data-toggle-theme="night,light"
+      data-act-class="ACTIVECLASS"
+      onClick={() => {
+        setTheme(!themeState);
+      }}
+    >
+      {themeState ? (
+        <BsMoon size="28" className="theme-icon" />
+      ) : (
+        <BsSun size="28" className="theme-icon" />
+      )}
+    </button>
+  );
+};
 
 export default App;

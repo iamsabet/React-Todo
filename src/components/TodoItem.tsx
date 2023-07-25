@@ -1,3 +1,4 @@
+import { BsClockFill } from "react-icons/bs";
 const TodoItem = ({ todoItem, toggle, del }: TodoItemType) => {
   var d = new Date(todoItem.date),
     dformat =
@@ -17,7 +18,9 @@ const TodoItem = ({ todoItem, toggle, del }: TodoItemType) => {
         <p className="item-text">
           <span className="">{todoItem.task}</span>
           <br />
-          <span className="opacity-80 text-sm">{dformat}</span>
+          <span className="opacity-80 text-sm flex flex-row items-center text-center just-center">
+            <BsClockFill /> <span className="ml-2 mb-0.5">{dformat}</span>
+          </span>
         </p>
         <button className="delete-button" onClick={() => del(todoItem.id)}>
           Delete
