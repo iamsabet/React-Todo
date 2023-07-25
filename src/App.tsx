@@ -46,12 +46,15 @@ function App() {
   };
   return (
     <>
-      <div className="justify-center items-start pt-10 px-10 w-full h-auto flex flex-col">
-        <NewTodoForm onSubmit={addToDo} />
-        <hr className="bg-white w-full mt-4 mb-2 mx-auto rounded-lg" />
-        <h1 className="header text-3xl font-semibold tracking-wider">
-          Todo List
+      <div className="justify-center items-start pt-4 px-10 w-full h-auto flex flex-col">
+        <h1 className="header text-4xl mb-5 mx-7 font-bold tracking-wider link-success text-center">
+          React + Tailwind Todo List App
         </h1>
+        <NewTodoForm onSubmit={addToDo} />
+        <hr className="bg-white w-9/12 mt-6 mb-2 mx-auto rounded-lg" />
+        <h2 className="header w-full text-3xl font-semibold tracking-wider text-center">
+          Todo List
+        </h2>
         <TodoList todos={todos} toggle={toggleTodo} del={deleteTodo} />
       </div>
     </>

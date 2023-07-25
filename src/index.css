@@ -34,7 +34,7 @@
     outline-1 h-12 rounded-lg btn-success
   }
   .list{
-    @apply mx-1 pt-2 w-full
+    @apply mx-0 pt-2 w-full
   }
   .list-item{
     @apply flex flex-row justify-start w-full divide-dashed 
