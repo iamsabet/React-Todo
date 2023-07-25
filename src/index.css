@@ -25,8 +25,26 @@
 } */
 
 @layer components{
-
-
-
+  .add-btn{
+    @apply btn w-full rounded-lg text-lg font-semibold tracking-wider
+  }
+  .list{
+    @apply mx-1 pt-2 w-full
+  }
+  .list-item{
+    @apply flex flex-row justify-start w-full divide-dashed 
+    btn-neutral rounded-xl p-0 my-2 shadow-lg
+    cursor-pointer
+  }
+  .item-label{
+    @apply flex flex-row justify-start cursor-pointer 
+    items-center h-auto w-full my-0 px-3 py-2
+  }
+  .item-text{
+    @apply ml-3 text-lg
+  }
+  .delete-button{
+    @apply btn btn-xs bg-red-800 ml-auto
+  }
 }
 
